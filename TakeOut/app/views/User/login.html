@@ -1,0 +1,82 @@
+#{extends 'User/index.html' /}
+#{set title:'登录' /}
+#{set 'moreStyles'}
+ <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/forward.css'}">
+ <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/background.css'}">
+ <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/code.css'}">
+#{/set}
+#{set 'moreScripts'}
+<script type="text/javascript" src = "@{'/public/javascripts/log.js'}"> </script>
+<script type="text/javascript" src = "@{'/public/javascripts/foot_201409091557.js'}"> </script>
+#{/set}
+<div class="full-content-wrapper">
+<header id="topbar" role="banner">
+<div class="container clearfix">
+
+            <a id="logo" href="#" title="外卖哥" alt="外卖哥" role="logo">
+            <i class="default-logo"></i>
+                </a>
+    <nav class="topbar-nav" role="navigation">
+            <div class="topbar-user-nav tnav-link">
+        <a rel="nofollow" href="@{User.login()}">登录</a> /
+        <a rel="nofollow" href="@{User.register()}">注册</a>
+      </div>
+    </nav>
+  </div>
+  </header>
+  
+  
+  
+  <div class="container">
+          
+          <div class="clearfix">
+<div id="modal_qr" class="modal-qr modal hide fade" tabindex="-1" role="dialog" aria-labelledby="iphoneDownloadLabel" aria-hidden="true">
+
+  <div class="modal-body">
+    <img src="/images/forward/global/logreg-qrCode.png" alt="QR Code">
+  </div>
+</div>
+
+  <div class="logreg-box">
+    <nav class="clearfix">
+      <a class="logreg-tab-item active" href="@{User.login()}">会员登录</a>
+      <a class="logreg-tab-item" href="@{User.register()}">免费注册</a>
+    </nav>
+    <div class="logreg-form"><form id="login_form" name="login" method="post" action="/login" novalidate="novalidate">
+  <div class="relative">
+    <label for="login_username"><span class="required-mark">*</span>用户名/Email</label>
+    <input type="text" id="login_username" class="logreg-input" name="signin[username]">
+  </div>
+
+  <div class="relative">
+    <label for="login_password"><span class="required-mark">*</span>密码</label>
+    <input type="password" id="login_password" class="logreg-input" name="signin[password]">
+  </div>
+
+    <div class="captcha">
+     <input type="text" onclick="createCode()" readonly="readonly" id="checkCode" class="unchanged" style="width: 80px"  /><br />
+    <label for="login_phrase"><span class="required-mark">*</span>验证码</label>
+    <input type="text" id="login_phrase" class="logreg-input" name="signin[phrase]">
+  </div>
+  
+  <div class="clearfix">
+    <label class="logreg-checkbox">
+      <input type="checkbox" name="signin[remember]" defaultvalue="on" checked="true">
+       记住我
+    </label>
+    <a href="/forget-password">忘记密码？</a>
+    <button id="login_btn" class="btn btn-yellow logreg-btn" onclick="validate();" type="button" data-loading="登录中…"> 登录</button>
+  </div>
+
+  <div class="logreg-oauth">
+    其他方式：
+    <a class="logreg-olink" href="/weibo/auth"><img id="wb_login_image" src="https://static.ele.me/images/forward/sina.gif" title="微博连接" alt="" border="0"></a>
+    <a class="logreg-olink" href="/renren/auth"><img id="xn_login_image" src="https://static.ele.me/images/forward/renren.gif" title="人人连接" alt="" border="0"></a>
+  </div>
+
+</form>
+</div>
+  </div>
+</div>
+        </div>
+ </div>

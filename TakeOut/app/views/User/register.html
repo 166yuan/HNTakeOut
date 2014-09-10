@@ -1,0 +1,77 @@
+#{extends 'main.html' /}
+#{set title:'注册' /}
+#{set 'moreStyles'}
+ <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/forward.css'}">
+ <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/background.css'}">
+#{/set}
+<div class="full-content-wrapper">
+<header id="topbar" role="banner">
+<div class="container clearfix">
+
+            <a id="logo" href="#" title="外卖哥" alt="外卖哥" role="logo">
+            <i class="default-logo"></i>
+                </a>
+    <nav class="topbar-nav" role="navigation">
+            <div class="topbar-user-nav tnav-link">
+        <a rel="nofollow" href="@{User.login()}">登录</a> /
+        <a rel="nofollow" href="@{User.register()}">注册</a>
+      </div>
+    </nav>
+  </div>
+  </header>
+  
+  
+  
+  <div class="container">
+          
+          <div class="clearfix">
+<div id="modal_qr" class="modal-qr modal hide fade" tabindex="-1" role="dialog" aria-labelledby="iphoneDownloadLabel" aria-hidden="true">
+
+  <div class="modal-body">
+    <img src="/images/forward/global/logreg-qrCode.png" alt="QR Code">
+  </div>
+</div>
+
+  <div class="logreg-box">
+    <nav class="clearfix">
+      <a class="logreg-tab-item" href="@{User.login()}">会员登录</a>
+      <a class="logreg-tab-item active" href="@{User.register()}">免费注册</a>
+    </nav>
+    <div class="logreg-form"><form id="register_form" name="register" action="/register" method="post" autocomplete="off" novalidate="novalidate">
+  <div class="relative">
+    <label><span class="required-mark">*</span>用户名</label>
+    <input type="text" class="logreg-input" name="sf_guard_user[username]">
+  </div>
+
+  <div class="relative">
+    <label><span class="required-mark">*</span>密码</label>
+    <input type="password" id="sf_guard_user_password" class="logreg-input" name="sf_guard_user[password]">
+  </div>
+
+  <div class="relative">
+    <label><span class="required-mark">*</span>确认密码</label>
+    <input type="password" class="logreg-input" name="sf_guard_user[repeatPassword]">
+  </div>
+
+  <div class="relative">
+    <label><span class="required-mark">*</span>电子邮箱</label>
+    <input type="text" class="logreg-input" name="sf_guard_user[email]">
+  </div>
+
+  
+  <div class="clearfix">
+    <button id="register_btn" class="btn btn-yellow logreg-btn" type="submit" data-loading="提交中…">注册</button>
+  </div>
+
+  <div class="logreg-oauth">
+    其他方式：
+    <a class="logreg-olink" href="/weibo/auth"><img id="wb_login_image" src="https://static.ele.me/images/forward/sina.gif" title="微博连接" alt="" border="0"></a>
+    <a class="logreg-olink" href="/renren/auth"><img id="xn_login_image" src="https://static.ele.me/images/forward/renren.gif" title="人人连接" alt="" border="0"></a>
+  </div>
+</form>
+
+</div>
+  </div>
+</div>
+        </div>
+ </div>
