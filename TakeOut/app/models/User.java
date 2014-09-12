@@ -27,10 +27,10 @@ public class User extends BasicModel {
 	@Column(name = "type")
 	public int TYPE;
 
-	@Column(name = "limit")
-	public Double paylimit;
+	@Column(name = "limit2")
+	public double limit2;
 
 	@Column(name = "score")
-	public Integer score;
+	public int score;
 
 }

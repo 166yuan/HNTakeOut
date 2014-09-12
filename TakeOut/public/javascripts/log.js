@@ -17,7 +17,7 @@ var code ; //全局变量
          checkCode.className="code";  
          checkCode.value = code;  
        }  
-         
+       document.getElementById("isCode").value=code;
      }  
        
       function validate ()  
@@ -34,10 +34,12 @@ var code ; //全局变量
        }  
        else  
        {  
+    	   	var username=document.getElementById("login_username").value;  
+    	   	var password=document.getElementById("login_password").value;  
     	    $.ajax({  
                 type: "POST",  
                 async:true,  
-                url: "WebForm1.aspx/TestAjax",    //必须是后台的静态方法  
+                url: " controllers.User/check_Login(username,password)",    //必须是后台的静态方法  
                 contentType: "application/json; charset=utf-8",  
                 dataType: "json",  
                 //  data: "name=John&location=Boston",  

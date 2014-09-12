@@ -1,5 +1,6 @@
 package utils;
 
+import models.Admin;
 import models.User;
 
 public class DatabaseUtil {
