@@ -12,7 +12,7 @@ public class Menu extends BasicModel{
 	public String name;
 	
 	@Column(name = "info")
-	public String information;
+	public String info;
 	
 	@Column(name = "price")
 	public double price;

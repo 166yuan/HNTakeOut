@@ -8,5 +8,4 @@ public class Manager extends Controller{
 		render();
 	}
 	
-	
 }
