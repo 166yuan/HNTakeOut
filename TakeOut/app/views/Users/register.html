@@ -1,4 +1,4 @@
-#{extends 'main.html' /}
+#{extends 'Users/index.html' /}
 #{set title:'注册' /}
 #{set 'moreStyles'}
  <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/forward.css'}">
@@ -13,8 +13,8 @@
                 </a>
     <nav class="topbar-nav" role="navigation">
             <div class="topbar-user-nav tnav-link">
-        <a rel="nofollow" href="@{User.login()}">登录</a> /
-        <a rel="nofollow" href="@{User.register()}">注册</a>
+        <a rel="nofollow" href="@{Users.login()}">登录</a> /
+        <a rel="nofollow" href="@{Users.register()}">注册</a>
       </div>
     </nav>
   </div>
@@ -34,28 +34,29 @@
 
   <div class="logreg-box">
     <nav class="clearfix">
-      <a class="logreg-tab-item" href="@{User.login()}">会员登录</a>
-      <a class="logreg-tab-item active" href="@{User.register()}">免费注册</a>
+      <a class="logreg-tab-item" href="@{Users.login()}">会员登录</a>
+      <a class="logreg-tab-item active" href="@{Users.register()}">免费注册</a>
     </nav>
-    <div class="logreg-form"><form id="register_form" name="register" action="/register" method="post" autocomplete="off" novalidate="novalidate">
+    <div class="logreg-form">
+    	<form id="register_form" name="register" action="@{Users.newUser(username,password,repeat,email)}" method="post" autocomplete="off" novalidate="novalidate">
   <div class="relative">
     <label><span class="required-mark">*</span>用户名</label>
-    <input type="text" class="logreg-input" name="sf_guard_user[username]">
+    <input type="text" class="logreg-input" name="username">
   </div>
 
   <div class="relative">
     <label><span class="required-mark">*</span>密码</label>
-    <input type="password" id="sf_guard_user_password" class="logreg-input" name="sf_guard_user[password]">
+    <input type="password" class="logreg-input" name="password">
   </div>
 
   <div class="relative">
     <label><span class="required-mark">*</span>确认密码</label>
-    <input type="password" class="logreg-input" name="sf_guard_user[repeatPassword]">
+    <input type="password" class="logreg-input" name="repeat">
   </div>
 
   <div class="relative">
     <label><span class="required-mark">*</span>电子邮箱</label>
-    <input type="text" class="logreg-input" name="sf_guard_user[email]">
+    <input type="text" class="logreg-input" name="email">
   </div>
 
   
