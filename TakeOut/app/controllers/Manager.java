@@ -10,11 +10,11 @@ public class Manager extends Controller{
 	}
 	
 	public static void addMenu(Menu menu){
-		menu.edit(rootParamNode, name)
+		menu.create();
 	}
 	
 	public static void modifyPrice(Menu menu,double price){
-		menu.create();
+		
 	}
 	
 	public static void deleteMenu(Menu menu){
