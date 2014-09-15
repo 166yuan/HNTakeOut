@@ -4,6 +4,7 @@ import play.cache.Cache;
 import play.data.validation.Required;
 import play.libs.Codec;
 import play.mvc.Controller;
+import play.mvc.Http.Cookie;
 import utils.MessageUtil;
 
 public class User extends Controller{
@@ -18,14 +19,16 @@ public class User extends Controller{
 	}
 	
 	public static void check_Login(
-	 @Required(message="请输入用户名") String username, 
-     @Required(message="请输入密码") String password, 
-     @Required(message="请输入验证码") String code, 
+	String username, 
+     String password, 
+    String code, 
      String randomID
 			){
 		
 		models.User user=models.User.find("account=? and passwd=?",username,password ).first();
+	
 		if(user!=null){
+			System.out.println("the code is :"+Cache.get(randomID));
 			 if(code.equals(Cache.get(randomID))){
 				Manager.index(); 
 			 }else{

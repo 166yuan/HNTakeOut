@@ -34,17 +34,17 @@ public class Store extends BasicModel {
 	public String publish;
 	
 	@Column(name = "payway")
-	public int PayWay;
+	public int payWay;
 	
 	@Column(name = "intro")
-	public String introduction;
+	public String intro;
 	
 	@Column(name = "address")
 	public String address;
 	
 	@Column(name = "op_hour")
-	public String openHours;
+	public String opHour;
 	
 	@Column(name = "image_url")
-	public String image;
+	public String imageUrl;
 }

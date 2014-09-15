@@ -12,13 +12,16 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-        render();
+       User.login();
     }
     
+    /**通用
+     * @param id 任意id
+     */
     public static void captcha(String id) {
         Images.Captcha captcha = Images.captcha();
         String code = captcha.getText("#E4EAFD");
-        Cache.set(id, code, "30mn");
+        Cache.set(id, code, "10s");
         renderBinary(captcha);
     }
 }

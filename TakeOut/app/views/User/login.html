@@ -10,8 +10,6 @@
 #{/set}
 <div class="full-content-wrapper">
 <header id="topbar" role="banner">
-<div class="container clearfix">
-
             <a id="logo" href="#" title="外卖哥" alt="外卖哥" role="logo">
             <i class="default-logo"></i>
                 </a>
@@ -32,7 +30,7 @@
 <div id="modal_qr" class="modal-qr modal hide fade" tabindex="-1" role="dialog" aria-labelledby="iphoneDownloadLabel" aria-hidden="true">
 
   <div class="modal-body">
-    <img src="/images/forward/global/logreg-qrCode.png" alt="QR Code">
+    <img src="/public/images/logo.png" alt="QR Code">
   </div>
 </div>
 
@@ -43,6 +41,7 @@
     </nav>
     <div class="logreg-form">
     #{form @User.check_Login(username,password,code,randomID)}
+    <form action="@{User.check_Login(username,password,code,randomID)}">
     #{ifErrors}
         <p class="error">
             ${errors[0]}
