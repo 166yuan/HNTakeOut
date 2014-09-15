@@ -30,7 +30,13 @@ public class User extends BasicModel {
 	@Column(name = "limit2")
 	public double limit2;
 
+	/**
+	 * 积分
+	 */
 	@Column(name = "score")
 	public int score;
-
+	
+	
+	@Column(name = "email")
+	public String email;
 }

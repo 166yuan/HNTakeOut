@@ -1,12 +1,9 @@
-#{extends 'User/index.html' /}
+#{extends 'Users/index.html' /}
 #{set title:'登录' /}
 #{set 'moreStyles'}
  <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/forward.css'}">
  <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/background.css'}">
  <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/code.css'}">
-#{/set}
-#{set 'moreScripts'}
-<script type="text/javascript" src = "@{'/public/javascripts/foot_201409091557.js'}"> </script>
 #{/set}
 <div class="full-content-wrapper">
 <header id="topbar" role="banner">
@@ -15,8 +12,8 @@
                 </a>
     <nav class="topbar-nav" role="navigation">
             <div class="topbar-user-nav tnav-link">
-        <a rel="nofollow" href="@{User.login()}">登录</a> /
-        <a rel="nofollow" href="@{User.register()}">注册</a>
+        <a rel="nofollow" href="@{Users.login()}">登录</a> /
+        <a rel="nofollow" href="@{Users.register()}">注册</a>
       </div>
     </nav>
   </div>
@@ -36,12 +33,12 @@
 
   <div class="logreg-box">
     <nav class="clearfix">
-      <a class="logreg-tab-item active" href="@{User.login()}">会员登录</a>
-      <a class="logreg-tab-item" href="@{User.register()}">免费注册</a>
+      <a class="logreg-tab-item active" href="@{Users.login()}">会员登录</a>
+      <a class="logreg-tab-item" href="@{Users.register()}">免费注册</a>
     </nav>
     <div class="logreg-form">
-    #{form @User.check_Login(username,password,code,randomID)}
-    <form action="@{User.check_Login(username,password,code,randomID)}">
+    #{form @Users.check_Login(username,password,code,randomID)}
+    <form action="@{Users.check_Login(username,password,code,randomID)}">
     #{ifErrors}
         <p class="error">
             ${errors[0]}
@@ -57,12 +54,12 @@
     <input type="password" id="login_password" class="logreg-input" name="password">
   </div>
 
-    <div class="captcha">
+    <!-- <div class="captcha">
 	<img src="@{Application.captcha(randomID)}" />
     <label for="login_phrase"><span class="required-mark">*</span>验证码</label>
     <input type="text" name="code" id="code" size="18" value="" />
-    <input type="hidden" name="randomID" value="${randomID}" />
-  </div>
+    <input type="hidden" name="randomID" value="tt" />
+  </div> -->
   
   <div class="clearfix">
     <label class="logreg-checkbox">

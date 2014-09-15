@@ -5,8 +5,8 @@ import models.Menu;
 
 public class Manager extends Controller{
 
-	public static void index(){
-		render();
+	public static void index(String name){
+		render(name);
 	}
 	
 	public static void addMenu(Menu menu){
