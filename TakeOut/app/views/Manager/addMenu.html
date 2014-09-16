@@ -1,0 +1,20 @@
+#{extends 'Manager/nav.html' /}
+#{ set addMenu :"active" /}
+<div class="jumbotron">
+<form role="form">
+   <div class="form-group">
+      <label for="name">请输入菜单名称</label>
+      <input type="text" class="form-control" id="name" 
+         placeholder="请输入名称">
+         <label for="name">请输入售价</label>
+      <input type="text" class="form-control" id="price" 
+         placeholder="请输入售价">
+   </div>
+   <div class="form-group">
+      <label for="inputfile">选择一张图片上传</label>
+      <input type="file" id="inputfile">
+      <p class="help-block">选择菜式图片</p>
+   </div>
+   <button type="submit" class="btn btn-primary">提交</button>
+</form>
+</div>

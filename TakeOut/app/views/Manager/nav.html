@@ -1,0 +1,17 @@
+#{extends 'Manager/tpl.html' /}
+
+ 
+      <div class="container">
+     	<div class="row">
+  <div class="col-md-3">
+  	<ul class="nav nav-pills nav-stacked" role="tablist" style="max-width: 300px;">
+      <li role="presentation" class="#{get 'showMenu'/}"><a href="@{Manager.showMenu()}">查看菜单</a></li>
+      <li role="presentation" class="#{get 'addMenu'/}"><a href="@{Manager.addMenu()}">新增菜式</a></li>
+      <li role="presentation" class="#{get 'editMenu'/}"><a href="@{Manager.editMenu()}">编辑菜式</a></li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+  #{doLayout /} 		
+ </div>
+	</div>
+      </div>

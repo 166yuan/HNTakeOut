@@ -16,4 +16,7 @@ public class Menu extends BasicModel{
 	
 	@Column(name = "price")
 	public double price;
+	
+	@Column(name = "image_url")
+	public String imageUrl; 
 }
