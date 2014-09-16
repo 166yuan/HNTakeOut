@@ -12,7 +12,7 @@ public class Manager extends Controller{
 	public static void addMenu(Menu menu){
 		menu.create();
 		flash.success("success to add the menu!");
-		index();
+//		index();
 	}
 	
 	public static void modifyMenu(Long id){
@@ -24,13 +24,24 @@ public class Manager extends Controller{
 	        flash.success("fail to modify the menu!");
 	    }
 	    flash.success("success to modify the menu!");
-	    index();
+//	    index();
 	}
 	
 	public static void deleteMenu(Menu menu){
 		menu.delete();
 		flash.success("success to delete the %s", menu.name);
-		index();
+//		index();
 	}
 	
+	public static void showMenu(){
+		render();
+	}
+	
+	public static void addMenu(){
+		render();
+	}
+	
+	public static void editMenu(){
+		render();
+	}
 }
