@@ -1,4 +1,30 @@
 #{extends 'Manager/nav.html' /}
 #{ set showMenu :"active" /}
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".hovershow").hide();
+	  $(".col-xs-6").hover(function () {  
+                $(".hovershow").show(); } );
+                
+});
+</script>
+<div class="row">
+#{if menulist==null}
 <h2>现在还没有菜单，赶紧去添加吧</h2>
 <p><a href="@{Manager.addMenu()}" class="btn btn-success btn-lg" role="button">去添加 &raquo;</a></p>
+#{/if}
+	#{else}
+#{list menulist, as:'menu'}
+			<div class="col-xs-6 col-lg-4" >
+				<a href="/Manager/modifyMenu?id=${menu.id}">
+              <h2>${menu.name}</h2>
+               <img class="img-responsive" height="100" width="100"  alt="Generic placeholder thumbnail" src="${menu.imageUrl}">
+              <p>价格：${menu.price}</p>
+              <span class="text-muted">描述：${menu.info}</span>
+             </a>
+             <br>
+             &nbsp;&nbsp;&nbsp;<a  class="hovershow"  href="/Manager/deleteMenu?id=${menu.id}" role="button">删除 </a>
+            </div><!--/span-->
+   #{/list}
+   #{/else}
+ </div>  

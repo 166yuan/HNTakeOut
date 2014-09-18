@@ -17,17 +17,22 @@
             </button>
             <a class="navbar-brand" href="#">食堂到家后台管理系统</a>
           </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-             
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-            </ul>
-          </div><!--/.nav-collapse -->
+            <ul class="nav nav-tabs" role="tablist">
+  ...
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      Dropdown <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      ...
+    </ul>
+  </li>
+  ...
+</ul>
         </div><!--/.container-fluid -->
       </nav>
 
       <!-- Main component for a primary marketing message or call to action -->
      #{doLayout /}
-
+	#{include 'alertMsg.html'/}
     </div> <!-- /container -->

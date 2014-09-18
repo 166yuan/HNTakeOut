@@ -1,0 +1,41 @@
+#{extends 'Manager/nav.html' /}
+#{ set showMenu :"active" /}
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".prehidden").hide();
+  $("#showEdit").click(function(){
+  $(".prehidden").show();
+  });
+});
+</script>
+<div class="jumbotron">
+<form role="form" action="@{Manager.modifyMenu2(menuid,name,price,info,f)}" method="post" enctype="multipart/form-data">
+   <div class="form-group" >
+   	<input type="hidden" value="${menu.id}" name="menuid">
+   	<img class="img-responsive" height="100" width="100"  alt="Generic placeholder thumbnail" src="${menu.imageUrl}">
+      <br>
+      <label for="name">菜式名称  :  ${menu.name}</label>
+      <br>
+      <input type="text" class="prehidden" name="name" 
+         placeholder="请输入名称">
+         <br>
+         <label for="name">当前售价  :  ${menu.price}</label>
+         <br>
+      <input type="text" class="prehidden" name="price" 
+         placeholder="请输入售价">
+          <br>
+         <label for="name">菜式描述   :  ${menu.info}</label>
+         <br>
+      <input type="text" class="prehidden" name="info" 
+         placeholder="请输入描述">
+   </div>
+   <div class="prehidden">
+      <label for="inputfile">选择一张图片上传</label>
+      <input type="file" id="inputfile" name="f">
+      <p class="help-block">选择菜式图片</p>
+   </div>
+   <a  class="btn btn-success" id="showEdit" role="button">修改 </a>
+   <button type="submit" class="btn btn-primary">保存</button>
+</form>
+</div>
+<p><a href="@{Manager.showMenu()}" class="btn btn-primary btn-lg" role="button">返回 &raquo;</a></p>

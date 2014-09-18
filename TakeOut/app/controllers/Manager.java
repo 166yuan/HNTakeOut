@@ -1,10 +1,5 @@
 package controllers;
 
-import play.mvc.Controller;
-import utils.MessageUtil;
-import models.Menu;
-import models.User;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,34 +7,70 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.*;
+import java.util.List;
 
-public class Manager extends Controller{
+import org.apache.ivy.util.StringUtils;
+import org.codehaus.groovy.util.StringUtil;
 
-	public static void index(String name){
+import play.mvc.Controller;
+import utils.MessageUtil;
+import models.Menu;
+
+public class Manager extends Controller {
+
+	public static void index(String name) {
 		render(name);
 	}
-	
-	public static void addMenu(Menu menu){
-		menu.save();
+
+	public static void modifyMenu(String id) {
+		Menu menu = Menu.findById(id);
+		render(menu);
 	}
-	
+
+	public static void modifyMenu2(String menuid, String name, String price,
+			String info, File f) {
+		Menu menu = Menu.findById(menuid);
+		if (name.length() > 0) {
+			menu.name = name;
+		}
+		if (price.length() > 0) {
+			try {
+				menu.price = Double.parseDouble(price);
+			} catch (Exception e) {
+				// TODO: handle exception
+				MessageUtil.generateErrorMsg("价格输入错误");
+			}
+		}
+		if (info.length() > 0) {
+			menu.info = info;
+		}
+		if (f != null) {
+			String path = copy(f, new File("public/images/"));
+			menu.imageUrl = "/public/images/" + path;
+		}
+		menu.save();
+		modifyMenu(menuid);
+	}
+
+	public static void deleteMenu(String id) {
+		Menu menu=Menu.findById(id);
+		menu.delete();
+		showMenu();
+	}
+
 	public static void showMenu() {
 		List<Menu> menulist = Menu.findAll();
 		render(menulist);
 	}
-	
-	public static void editMenu(String id,double price){
-		Menu menu = Menu.findById(id);
-		menu.price=price;
-	    if(menu!=null)
-	    	menu.save();
+
+	public static void addMenu() {
+		render();
 	}
-	
-	public static void deleteMenu(Menu menu){
-		menu.delete();
+
+	public static void editMenu() {
+		render();
 	}
-	
+
 	public static void newMenu(String name, String price, String info, File f) {
 		try {
 			Menu menu = new Menu();
@@ -92,5 +123,4 @@ public class Manager extends Controller{
 		}
 		return tarpath.getName();
 	}
-	
 }
