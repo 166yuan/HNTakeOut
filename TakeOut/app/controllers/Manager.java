@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.apache.ivy.util.StringUtils;
 import org.codehaus.groovy.util.StringUtil;
+import org.h2.constant.SysProperties;
 
 import play.mvc.Controller;
 import utils.MessageUtil;
@@ -71,14 +72,20 @@ public class Manager extends Controller {
 		render();
 	}
 
-	public static void newMenu(String name, String price, String info, File f) {
+	public static void newMenu(String name, String price, String info, File f ,String selltime) {
 		try {
+			System.out.println(selltime);
 			Menu menu = new Menu();
 			menu.name = name;
 			menu.price = Double.parseDouble(price);
-			menu.info = info;
+			menu.menuType=Integer.parseInt(selltime);
+			if(info.length()>0){menu.info = info;}
+			if(f!=null){
 			String url = copy(f, new File("public/images/"));
 			menu.imageUrl = "/public/images/" + url;
+			}else{
+				menu.imageUrl = "/public/images/" + "nopicture.png";
+			}
 			menu.save();
 			showMenu();
 		} catch (Exception e) {
@@ -122,5 +129,20 @@ public class Manager extends Controller {
 			}
 		}
 		return tarpath.getName();
+	}
+	
+	public static void showLunch(){
+		List<Menu>lunchlist=Menu.find("menu_type=?",Menu.LUNCH).fetch();
+		List<Menu>lunchlist2=Menu.find("menu_type=?", Menu.LUN_SUP).fetch();
+		lunchlist.addAll(lunchlist2);
+//		System.out.println(lunchlist.size());
+		render(lunchlist);
+	}
+	
+	public static void showDinner(){
+		List<Menu>dinnerlist2=Menu.find("menu_type=?",Menu.LUN_SUP).fetch();
+		List<Menu>dinnerlist=Menu.find("menu_type=?",Menu.SUPPER).fetch();
+		dinnerlist.addAll(dinnerlist2);
+		render(dinnerlist);
 	}
 }

@@ -1,5 +1,5 @@
-#{extends 'Manager/nav.html' /}
-#{ set showMenu :"active" /}
+#{extends 'Manager/tpl.html' /}
+#{ set showDinner :"active" /}
 <script type="text/javascript">
 $(document).ready(function(){
   $(".hovershow").hide();
@@ -9,12 +9,12 @@ $(document).ready(function(){
 });
 </script>
 <div class="row">
-#{if menulist.size()==0}
+#{if dinnerlist.size()==0}
 <h2>现在还没有菜单，赶紧去添加吧</h2>
 <p><a href="@{Manager.addMenu()}" class="btn btn-success btn-lg" role="button">去添加 &raquo;</a></p>
 #{/if}
 	#{else}
-#{list menulist, as:'menu'}
+#{list dinnerlist, as:'menu'}
 			<div class="col-xs-6 col-lg-4" >
 				<a href="/Manager/modifyMenu?id=${menu.id}">
               <h2>${menu.name}</h2>

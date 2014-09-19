@@ -2,37 +2,29 @@
 #{set 'moreStyles'}
 
 #{/set}
-
+ <nav class="navbar navbar-default navbar-static-top" role="navigation">
+ 	<div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><strong>食堂到家后台管理系统</strong></a>
+        </div>
+         <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="#{get 'showMenu'/} #{get 'addMenu'/}"><a href="@{Manager.showMenu()}">菜式管理</a></li>
+            <li class="#{get 'showLunch'/}"><a href="@{Manager.showLunch()}">午餐菜式</a></li>
+            <li class="#{get 'showDinner'/}"><a href="@{Manager.showDinner()}">晚餐菜式</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">管理员 ：${name}</a></li>
+            <li><a href="@{Users.login()}">退出 &nbsp;&nbsp;&nbsp;</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+ 	</nav>
     <div class="container">
-
-      <!-- Static navbar -->
-      <nav class="navbar  navbar-inverse " role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">食堂到家后台管理系统</a>
-          </div>
-            <ul class="nav nav-tabs" role="tablist">
-  ...
-  <li role="presentation" class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-      Dropdown <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu" role="menu">
-      ...
-    </ul>
-  </li>
-  ...
-</ul>
-        </div><!--/.container-fluid -->
-      </nav>
-
       <!-- Main component for a primary marketing message or call to action -->
      #{doLayout /}
-	#{include 'alertMsg.html'/}
     </div> <!-- /container -->

@@ -1,20 +1,36 @@
 #{extends 'Manager/nav.html' /}
 #{ set addMenu :"active" /}
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.dropdown-toggle').dropdown();              
+});
+
+</script>
 <div class="jumbotron">
-<form role="form" action="@{Manager.newMenu(name,price,info,f)}" method="post" enctype="multipart/form-data">
+<form role="form" action="@{Manager.newMenu(name,price,info,f,selltime)}" method="post" enctype="multipart/form-data">
    <div class="form-group" >
-      <label for="name">菜式名称</label>
+      <label for="name">菜式名称（必选）</label>
       <input type="text" class="form-control" name="name" 
          placeholder="请输入名称">
-         <label for="name">售价</label>
+         <label for="name">售价（必选）</label>
       <input type="text" class="form-control" name="price" 
          placeholder="请输入售价">
-         <label for="name">菜式描述</label>
+         <label for="name">菜式描述（可选）</label>
       <input type="text" class="form-control" name="info" 
          placeholder="请输入描述">
+         <br>
+         <label for="name">出售时间（必选，且选一个）</label>
+         <br>
+         <label for="name">午餐</label>
+       <input type="checkbox" name="selltime" value="0" checked=false>
+        <label for="name">晚餐</label>
+       <input type="checkbox" name="selltime" value="1" >  
+        <label for="name">午餐&晚餐</label>
+       <input type="checkbox" name="selltime" value="2" > 
    </div>
+   <br>
    <div class="form-group">
-      <label for="inputfile">选择一张图片上传</label>
+      <label for="inputfile">菜式图片（可选）</label>
       <input type="file" id="inputfile" name="f">
       <p class="help-block">选择菜式图片</p>
    </div>
