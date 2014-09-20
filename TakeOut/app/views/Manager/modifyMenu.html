@@ -8,7 +8,7 @@ $(document).ready(function(){
 });
 </script>
 <div class="jumbotron">
-<form role="form" action="@{Manager.modifyMenu2(menuid,name,price,info,f)}" method="post" enctype="multipart/form-data">
+<form role="form" action="@{Manager.modifyMenu2(menuid,name,price,info,f,selltime)}" method="post" enctype="multipart/form-data">
    <div class="form-group" >
    	<input type="hidden" value="${menu.id}" name="menuid">
    	<img class="img-responsive" height="100" width="100"  alt="Generic placeholder thumbnail" src="${menu.imageUrl}">
@@ -27,9 +27,50 @@ $(document).ready(function(){
          <br>
       <input type="text" class="prehidden" name="info" 
          placeholder="请输入描述">
+         <br>
+         #{if menu.menuType==0}
+          <label for="name">售出时间   : 中午 </label>
+          #{/if}
+          #{else}
+          #{if menu.menuType==1}
+          <label for="name">售出时间   : 晚餐</label>
+          #{/if}
+          #{else}
+           <label for="name">售出时间   : 中午 & 晚餐 </label>
+          #{/else}
+          #{/else}
+          <br>
+           <div class="prehidden">
+           	#{if menu.menuType==0}
+         <label for="name">午餐</label>
+       <input type="checkbox" name="selltime" value="0" checked=false>
+        <label for="name">晚餐</label>
+       <input type="checkbox" name="selltime" value="1" >  
+        <label for="name">午餐&晚餐</label>
+       <input type="checkbox" name="selltime" value="2" > 
+          #{/if}
+          #{else}
+          #{if menu.menuType==1}
+           <label for="name">午餐</label>
+       <input type="checkbox" name="selltime" value="0" >
+        <label for="name">晚餐</label>
+       <input type="checkbox" name="selltime" value="1" checked=false>  
+        <label for="name">午餐&晚餐</label>
+       <input type="checkbox" name="selltime" value="2" > 
+          #{/if}
+          #{else}
+            <label for="name">午餐</label>
+       <input type="checkbox" name="selltime" value="0" >
+        <label for="name">晚餐</label>
+       <input type="checkbox" name="selltime" value="1" >  
+        <label for="name">午餐&晚餐</label>
+       <input type="checkbox" name="selltime" value="2" checked=false> 
+          #{/else}
+          #{/else}
+           	</div>
    </div>
    <div class="prehidden">
-      <label for="inputfile">选择一张图片上传</label>
+      <label for="inputfile">修改菜式图片</label>
       <input type="file" id="inputfile" name="f">
       <p class="help-block">选择菜式图片</p>
    </div>

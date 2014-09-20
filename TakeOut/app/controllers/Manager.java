@@ -29,7 +29,7 @@ public class Manager extends Controller {
 	}
 
 	public static void modifyMenu2(String menuid, String name, String price,
-			String info, File f) {
+			String info, File f ,String selltime) {
 		Menu menu = Menu.findById(menuid);
 		if (name.length() > 0) {
 			menu.name = name;
@@ -48,6 +48,9 @@ public class Manager extends Controller {
 		if (f != null) {
 			String path = copy(f, new File("public/images/"));
 			menu.imageUrl = "/public/images/" + path;
+		}
+		if(selltime.length()>0){
+			menu.menuType=Integer.parseInt(selltime);
 		}
 		menu.save();
 		modifyMenu(menuid);
